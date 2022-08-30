@@ -6,12 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <div class="dashboard">
-        <div class="header"></div>
+        <div class="header">
+            <div class="searchBar">
+                <form action="#" method="get">
+                    <label for="search">
+                        <img src="svg/magnify.svg" alt="">
+                    </label>
+                    <input type="search" id="search" name="searchRequest">
+                </form>              
+            </div>
+            <div class="alarmButton">
+                <img src="svg/bell.svg" alt="">
+            </div>
+            <div class="smallLogoName smallScreen">
+                <img src="png/face.png" alt="">
+                <p>My Name</p>
+            </div>
+            <div class="bigLogoName">
+                <img src="png/face.png" alt="">
+                <p>Whatsaaaap! <br> <span class='bigName'>My Name<span></p>
+            </div>
+            <div class="threeButtons"></div>
+        </div>
         <div class="sidebar">
             <div class="dashboardLogo">
                 <div class="dashboardIcon sidebarIcon">
@@ -39,7 +60,7 @@
                 <div class="tasksIcon sidebarIcon">
                     <img src="svg/tasks.svg" alt="">
                 </div>
-                <div class="tasksTitle sidebarTitle">Tasks</div>
+                <div class="tasksTitle sidebarTitle"><a href="">Tasks</a></div>
                 <div class="comminitiesIcon sidebarIcon">
                     <img src="svg/people.svg" alt="">
                 </div>
