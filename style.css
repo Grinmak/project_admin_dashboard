@@ -9,6 +9,7 @@ h1,h2,h3,h4,span,p {
     margin: 0;
 }
 
+
 .dashboard {
     display: grid;
     height: 100vh;
@@ -21,12 +22,16 @@ h1,h2,h3,h4,span,p {
     grid-template: 1fr 1.3fr/4fr 1fr 1fr 1fr;
     height: 200px;
     padding-left: 2rem;
+    font-family: var(--sidebar-font);
 }
 .searchBar {
     grid-area: 1/1/2/2;
     display: grid;
     align-content: center;
-    /* justify-items: center; */
+}
+input:focus {
+    outline: none;
+    border: 1px solid var(--projects-color-line);
 }
 .alarmButton {
     grid-area: 1/2/2/3;
@@ -60,15 +65,41 @@ h1,h2,h3,h4,span,p {
 .bigLogoName > p {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     padding: 15px 0 15px 15px;
-    font-family: var(--sidebar-font);
+
 }
 .bigName {
     font-size: 2rem;
 }
 .threeButtons {
     grid-area: 2/2/3/5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr;
+    align-content: center;
+    justify-items: center;
+    gap:5px;
+}
+button {
+    border-radius: 15px;
+    border: none;
+    background: var(--header-buttons-color);
+    font-family: var(--sidebar-font);
+    color: white;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: var(--projects-color-line);
+    color: white;
+}
+.new {
+     justify-self : end;
+}
+.share {
+    justify-self: start;
 }
 form {
     height: 100%;
@@ -93,8 +124,9 @@ form > label > img, .alarmButton > img {
     background: var(--sidebar-background);
     display: grid;
     grid-auto-rows: max-content;
-    padding: 0 1rem 0 1rem;
+    padding: 1rem 1rem 0 1rem;
     row-gap: 3rem;
+
 }
 .sidebar > div {
     display: grid;
@@ -112,11 +144,20 @@ form > label > img, .alarmButton > img {
     display: grid;
     grid-template-columns: 5fr 1.5fr;
     grid-template-rows: 1fr 5fr 1fr 5fr;
-    gap: 2rem;
+    row-gap: 1rem;
+    column-gap: 2rem;
     padding: 0 2rem 1rem 2rem;
     background: var(--neutral-background);
-
+    font-family: var(--sidebar-font);
+    letter-spacing: 1px;
 }
+.mainArea p {
+    font-family:cursive ;
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding-top: 10px;
+}
+
 
 .projectsTitle {
     grid-area: 1/1/2/2;
@@ -160,6 +201,12 @@ h3, .icons {
 .icons > span {
     padding-right: 15px;
 }
+.icons img {
+    width: 25px;
+}
+.icons img:hover {
+    filter: invert(73%) sepia(23%) saturate(3119%) hue-rotate(337deg) brightness(96%) contrast(80%);
+}
 
 
 
@@ -179,10 +226,14 @@ h3, .icons {
 
 .trending {
     grid-area: 3/2/4/3;
+
 }
 
 .rightSideContentBottom {
     grid-area: 4/2/5/3;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 1.5rem;
 }
 
 .rightSideContentTop, .rightSideContentBottom {
@@ -190,10 +241,12 @@ h3, .icons {
     box-shadow: var(--box-shadow);
     border-radius: var(--four-corner-radius);
     display: grid;
+    padding: 1.5rem;
+}
+.rightSideContentTop {
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
-    padding: 1rem;
     justify-content: center;
+    gap: 10px;
 }
 
 
@@ -201,24 +254,25 @@ h3, .icons {
     grid-column: 2/3;
 }
 
+.rightSideContentBottom img {
+    width: 80px;
+    border-radius:50%;
+    aspect-ratio: 1/1;
+    border:1px solid orange;
+}
+.rightSideContentBottom span{
+    font-family: var(--sidebar-font);
+}
+.bro {
+    grid-column: 1/2;
+}
+.broTitle {
+    grid-column: 2/3;
+}
+
 .title {
    display: flex;
    align-items: end;
-}
-
-
-:root {
-    --neutral-background: rgba(150, 161, 185, 0.205);
-    --sidebar-background: /* rgb(46, 142, 206) */ #0284c7;
-    --projects-color-line: rgb(221, 143, 59);
-    --line-radius: 15px 0 0 15px;
-    --box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.2);
-    --four-corner-radius: 15px;
-    --sidebar-title: white;
-    --sidebar-font: 'Righteous';
-    --small-logo-padding: 10%;
-    /* --header-buttons-color: rgb(46, 107, 206); */
-    
 }
 
 .line {
@@ -247,8 +301,8 @@ h3, .icons {
     width: 3rem;
 }
 
-.navigation > .sidebarIcon > img,
-.options > .sidebarIcon > img {
+.navigation > .sidebarIcon  img,
+.options > .sidebarIcon  img {
     width: 1.5rem;
 }
 .dashboardLogo {
@@ -271,18 +325,14 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
+.sidebarIcon > a > img:hover{
+    scale: 120%;
+}
 .imgColor {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(31deg) brightness(104%) contrast(102%);
 }
 
 
-/* @media screen and (max-width: 1000px){
-    .projects {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));        
-    }
-
-}*/
 
 @media screen and (max-width: 500px) {
     .sidebar {
@@ -295,10 +345,6 @@ a:hover {
     .options .sidebarTitle, .sidebarTitle  {
     color: transparent;
     }
-/*     .projects {
-    grid-template-columns: 150px;
-    } */
-
     .mainArea {
         display: flex;
         flex-flow: column;
@@ -311,4 +357,32 @@ a:hover {
         display: none;
         visibility: hidden;
     }
+    .threeButtons {
+        display: flex;
+        flex-flow: column;
+        width: 60px;
+        justify-content: center;
+        padding-left: 25%;
+        
+    }
+    button {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+
 } 
+:root {
+    --neutral-background: rgba(150, 161, 185, 0.205);
+    --sidebar-background: /* rgb(46, 142, 206) */ #0284c7;
+    --projects-color-line: #dd8f3b;
+    --line-radius: 15px 0 0 15px;
+    --box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.2);
+    --four-corner-radius: 15px;
+    --sidebar-title: white;
+    --sidebar-font: 'Righteous';
+    --small-logo-padding: 10%;
+    --header-buttons-color: #0369a1;
+    /* --header-buttons-color: rgb(46, 107, 206); */
+    
+}
